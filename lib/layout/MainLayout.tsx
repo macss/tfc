@@ -1,5 +1,5 @@
 import Copyright from '@lib/components/Copyright'
-import { Box, Container } from '@mui/material'
+import { Box, Container, Paper } from '@mui/material'
 import React from 'react'
 import TopAppbar from './TopAppbar'
 
@@ -9,10 +9,12 @@ const MainLayout = ({ children }: React.PropsWithChildren<{}>) => {
       <Box sx={{ flexGrow: 1 }}>
         <TopAppbar />
         <Container sx={{
-          mt: 4,
+          mt: 2,
           mb: 8
         }}>
+          <Paper sx={{p:2}}>
             {children}
+          </Paper>
         </Container>
         <Box 
           sx={{

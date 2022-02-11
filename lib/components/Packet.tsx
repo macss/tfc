@@ -63,7 +63,7 @@ const PacketCell = ({ bit, editable = false, pos, onClick = (() => {})}: PacketC
       }}
     >
       {bit}
-      <small>{`0000${pos.toString(2)}`.slice(-4)}</small>
+      {/*<small>{`0000${pos.toString(2)}`.slice(-4)}</small>*/}
     </Grid>
   )
 }

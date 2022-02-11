@@ -12,10 +12,14 @@ export function repetitionDecoder(code: string): DecoderResponse {
   const chunks = code.match(/.{3}/g)
 
   let output = ''
+  let errors = 0
 
   if (chunks) {
     output = chunks.map(chunk => {
       const sum = chunk.split('').reduce((a,c) => a + Number(c), 0)
+      if (chunk[0] !== chunk[1] || chunk[0] !== chunk[2] || chunk[1] !== chunk[2]) {
+        errors++
+      }
       return sum > 1 ? 1 : 0
     }).join('')
   }
@@ -23,7 +27,7 @@ export function repetitionDecoder(code: string): DecoderResponse {
   return {
     input: code,
     output,
-    errors: 0,
+    errors,
     fixedError: false
   }
 }
@@ -37,7 +41,7 @@ export function repetitionDecoder(code: string): DecoderResponse {
 export function repetitionResponseToText(response: DecoderResponse) {
   return {
     message: bytesToText(response.output),
-    errors: 0
+    errors: response.errors
   }
 }
 

@@ -19,9 +19,13 @@ interface CodeDisplayProps {
    * Tipo de código exibido pelo componente, utilizado para decodificar a mensagem
    */
   codeType: 'hamming' | 'repetition' | 'raw' | 'parity'
+  /**
+   * Controle para exibir ou esconder as legendas
+   */
+  hideLabels?: boolean
 }
 
-const CodeDisplay = ({ code, editable = false, codeType }: CodeDisplayProps) => {
+const CodeDisplay = ({ code, editable = false, codeType, hideLabels = false }: CodeDisplayProps) => {
   /**
    * Estado utilizado para modificar a mensagem original
    */
@@ -53,7 +57,9 @@ const CodeDisplay = ({ code, editable = false, codeType }: CodeDisplayProps) => 
     }
   }
 
-  const text = !editable ? <>Código original <br /> <small>{code}</small></> : <>Código modificado <br /> <small>{receivedPackets.join('')}</small></>
+  const text = !editable ? 
+    <Typography sx={{overflowWrap: 'break-word'}}><b>Código original:</b> {code}</Typography> : 
+    <Typography sx={{overflowWrap: 'break-word'}}><b>Código recebido:</b> {receivedPackets.join('')}</Typography>
 
   /**
    * Componente que exibe a mensagem decodificada
@@ -84,7 +90,7 @@ const CodeDisplay = ({ code, editable = false, codeType }: CodeDisplayProps) => 
     }, [])    
 
     return (
-      <Typography variant="body2">
+      <Typography>
         <b>Mensagem Recebida:</b> {decoded.message} <br />
         <b>Erros detectados:</b> {`${decoded.errors}`}
       </Typography>
@@ -94,11 +100,12 @@ const CodeDisplay = ({ code, editable = false, codeType }: CodeDisplayProps) => 
   if (receivedPackets.length > 0)
     return (
       <>
-        <Typography variant="body1">
-        { text }
-        </Typography>
-        <br />
-        <Message />
+        {!hideLabels && 
+          <>
+            { text }
+            <Message />
+          </>
+        }
         <Grid container spacing={1}>
           {
             receivedPackets.map((packet, i) => (
@@ -112,9 +119,14 @@ const CodeDisplay = ({ code, editable = false, codeType }: CodeDisplayProps) => 
     )
 
   return (
-    <Typography>
-      Nenhuma mensagem foi especificada.
-    </Typography>
+    <Grid container spacing={1}>
+      <Grid item xs={3}>
+        <Packet 
+          bits="0000000000000000"
+          packetNumber={0}
+        />
+      </Grid>
+    </Grid>
   )
 }
 
