@@ -3,6 +3,10 @@ import repetitionEncode from '@lib/utils/repetitionEncoder'
 import textToBytes from '@lib/utils/textToBytes'
 import React, { useState } from 'react'
 
+/**
+ * Componente utilizado para demonstrar os códigos de repetição,
+ * é interativo, o usuário pode injetar erros na mensagem
+ */
 const RepetitionCode = () => {
   const [input, setInput] = useState('')
   const [byteInput, setByteInput] = useState('')

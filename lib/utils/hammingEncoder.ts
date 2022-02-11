@@ -1,3 +1,9 @@
+/**
+ * Função que recebe uma sequência de Bytes e codifica em código de Hamming
+ * 
+ * @param code sequência de Bytes
+ * @returns código de Hamming equivalente
+ */
 export default function hammingEncode(code: string) {
   const chunks = code.match(/.{1,11}/g)
 

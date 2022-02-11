@@ -1,3 +1,9 @@
+/**
+ * Função que recebe uma sequência de bytes e retorna um código de paridade
+ * 
+ * @param code sequência de bytes a ser codificada
+ * @returns sequência de bytes codificada
+ */
 export default function parityEncode(code: string) {
   const chunks = code.match(/.{1,15}/g)
 

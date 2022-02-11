@@ -1,6 +1,16 @@
 import bytesToText from "./bytesToText"
 import { DecoderResponse } from "./decoder"
 
+/**
+ * Função que decodifica um código de digito de paridade,
+ * caso encontre um erro acusará a presença do mesmo mas não irá
+ * corrigí-lo.
+ * 
+ * Só identifica uma quantidade impar  de erros
+ * 
+ * @param code sequência codificada com digito de paridade
+ * @returns sequencia de bits decodificada
+ */
 export function parityDecoder(code: string): DecoderResponse[] {
   if (code.length % 16 !== 0)
     throw new Error('Invalid code size')
@@ -27,6 +37,12 @@ export function parityDecoder(code: string): DecoderResponse[] {
   }]
 }
 
+/**
+ * Função que utiliza a resposta do decoder para transformar em texto ASCII
+ * 
+ * @param responses lista de respostas fornecida pelo decoder
+ * @returns texto em ASCII
+ */
 export function parityResponsesToText(responses: DecoderResponse[]) {
   const fullOutput = responses.map(response => response.output).join('')
   const errorCount = responses.reduce((a,c) => c.errors + a, 0)
@@ -44,6 +60,15 @@ export function parityResponsesToText(responses: DecoderResponse[]) {
   }
 }
 
+/**
+ * Função que combina as duas funções anteriores
+ * 
+ * @see {@link parityDecoder}
+ * @see {@link parityResponsesToText}
+ * 
+ * @param code texto a ser decodificado
+ * @returns texto em ASCII
+ */
 export default function parityDecode(code: string) {
   const responses = parityDecoder(code)
   return parityResponsesToText(responses)

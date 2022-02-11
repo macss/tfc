@@ -7,12 +7,24 @@ import React, { useEffect, useState } from 'react'
 import Packet from './Packet'
 
 interface CodeDisplayProps {
+  /**
+   * Código a ser exibido pelo componente
+   */
   code: string
+  /**
+   * Propriedade que define se os dados do componente podem ser editados
+   */
   editable?: boolean
+  /**
+   * Tipo de código exibido pelo componente, utilizado para decodificar a mensagem
+   */
   codeType: 'hamming' | 'repetition' | 'raw' | 'parity'
 }
 
 const CodeDisplay = ({ code, editable = false, codeType }: CodeDisplayProps) => {
+  /**
+   * Estado utilizado para modificar a mensagem original
+   */
   const [receivedPackets, setReceivedPackets] = useState<string[]>([])
 
   useEffect(() => {
@@ -25,6 +37,13 @@ const CodeDisplay = ({ code, editable = false, codeType }: CodeDisplayProps) => 
     }
   }, [code])
 
+  /**
+   * Função utilizada para modificar um pacote do código, faz com que o usuário possa 
+   * interagir e modificar o código exibido
+   * 
+   * @param packet sequência de bits contida no pacote 
+   * @param packetNumber posição do pacote na lista que os armazena
+   */
   const changePacket = (packet: string, packetNumber: number) => {
     const newPackets = receivedPackets?.slice()
 
@@ -36,6 +55,9 @@ const CodeDisplay = ({ code, editable = false, codeType }: CodeDisplayProps) => 
 
   const text = !editable ? <>Código original <br /> <small>{code}</small></> : <>Código modificado <br /> <small>{receivedPackets.join('')}</small></>
 
+  /**
+   * Componente que exibe a mensagem decodificada
+   */
   const Message = () => {
     const [decoded, setDecoded] = useState({
       message: '',
@@ -59,9 +81,7 @@ const CodeDisplay = ({ code, editable = false, codeType }: CodeDisplayProps) => 
             errors: 0
           })
       }
-    }, [])
-
-    
+    }, [])    
 
     return (
       <Typography variant="body2">

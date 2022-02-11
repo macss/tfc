@@ -1,6 +1,14 @@
 import bytesToText from "./bytesToText";
 import { DecoderResponse } from "./decoder";
 
+/**
+ * Função que decodifica um código em Hamming, caso detecte um erro de um 
+ * único bit ela irá corrigir, para um erro de 2 bits a função irá dizer 
+ * que um erro foi encontrado mas não conseguirá identificá-lo e corrigí-lo
+ * 
+ * @param code string codificada em hamming
+ * @returns uma lista com a tradução do decoder considerando sequências de 16 bits
+ */
 export function hammingDecoder(code: string): DecoderResponse[] {
   const chunks = code.match(/.{16}/g)
 
@@ -48,6 +56,12 @@ export function hammingDecoder(code: string): DecoderResponse[] {
   }]
 }
 
+/**
+ * Função que recebe a resposta do decoder e transforma em texto ASCII
+ * 
+ * @param responses lista com todas as respostas do decoder
+ * @returns texto traduzido em ASCII
+ */
 export function hammingResponsesToText(responses: DecoderResponse[]) {
   const fullOutput = responses.map(response => response.output).join('')
   const errorCount = responses.reduce((a,c) => c.errors + a, 0)
@@ -66,6 +80,15 @@ export function hammingResponsesToText(responses: DecoderResponse[]) {
   }
 }
 
+/**
+ * Função de utilidade que combina as duas funções anterirores em uma
+ * 
+ * @see {@link hammingDecoder}
+ * @see {@link hammingResponsesToText}
+ * 
+ * @param code código a ser decodificado 
+ * @returns texto em ASCII
+ */
 export default function hammingDecode(code: string) {
   const responses = hammingDecoder(code)
   return hammingResponsesToText(responses)
