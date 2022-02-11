@@ -96,7 +96,7 @@ const Home: NextPage = () => {
       />
       <br /><br />
       <Grid container spacing={1}>
-        <Grid item xs={3}>
+        <Grid item xs={12} md={6} lg={3}>
           <Typography variant="body2">
             Bytes não codificados
           </Typography>
@@ -110,7 +110,7 @@ const Home: NextPage = () => {
           />
         </Grid>
 
-        <Grid item xs={3}>
+        <Grid item xs={12} md={6} lg={3}>
           <Typography variant="body2">
             Dígito de Paridade
           </Typography>
@@ -124,7 +124,7 @@ const Home: NextPage = () => {
           />
         </Grid>
 
-        <Grid item xs={3}>
+        <Grid item xs={12} md={6} lg={3}>
           <Typography variant="body2">
             Código de Repetição
           </Typography>
@@ -138,7 +138,7 @@ const Home: NextPage = () => {
           />
         </Grid>
 
-        <Grid item xs={3}>
+        <Grid item xs={12} md={6} lg={3}>
           <Typography variant="body2">
             Código de Hamming
           </Typography>
