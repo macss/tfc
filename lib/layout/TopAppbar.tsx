@@ -19,12 +19,12 @@ const routes = [
     path: '/'
   },
   {
-    name: 'Dígito de Paridade',
-    path: '/parity-digit'
-  },
-  {
     name: 'Repetição',
     path: '/repetition-code'
+  },
+  {
+    name: 'Dígito de Paridade',
+    path: '/parity-digit'
   },
   {
     name: 'Código de Hamming',
