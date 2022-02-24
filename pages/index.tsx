@@ -32,24 +32,10 @@ const Home: NextPage = () => {
         Esses códigos funcionam ao adicionar algum tipo de redundância à mensagem transmitida de forma que o receptor, mesmo sem saber o conteúdo original da mensagem consiga 
         identificar a presença ou não de erros, alguns algorítmos mais sofisticados conseguem, além de encontrar o erro, corrigí-lo. <br />
         
-          Durante os anos diversos códigos deste tipo foram desenvolvidos, dentre eles estão o código de paridade, código de repetição e o código de hamming. Neste website,  você
-        poderá ver, de forma interativa, como cada um dos algorítmos citados funciona, além de poder interferir na mensagem enviada a fim de simular um erro de transmissão.
+          Neste website estão apresentados três códigos deste tipo: código de repetição, digito de paridade e código de Hamming. Abaixo temos um playground onde podemos ver lado a
+        lado os códigos gerados por cada um dos métodos. Pela navegação superior o usuário pode escolher um método específico e interagir com as informações, inserindo erros e observando
+        as influências dos erros na mensagem recebida.
 
-      </Typography>
-
-      <Typography variant="h6">
-        Dígito de Paridade
-      </Typography>
-      <Divider />
-      <br />
-      <Typography 
-        sx={{
-          textAlign: 'justify'
-        }}
-        variant="body1"
-        gutterBottom
-      >
-        Texto
       </Typography>
 
       <Typography variant="h6">
@@ -64,7 +50,25 @@ const Home: NextPage = () => {
         variant="body1"
         gutterBottom
       >
-          Texto
+          O código de repetição é o mais básico dos CCE, a ideia de seu funcionamento é simples, para se transmitir uma mensagem envia-se o conteúdo original seguido de uma ou mais 
+        cópias do mesmo. Para este trabalho será utilizado uma taxa de repetição de 3, ou seja, a mensagem será enviada com duas cópias de si mesma.
+      </Typography>
+
+      <Typography variant="h6">
+        Dígito de Paridade
+      </Typography>
+      <Divider />
+      <br />
+      <Typography 
+        sx={{
+          textAlign: 'justify'
+        }}
+        variant="body1"
+        gutterBottom
+      >
+          O método do dígito de paridade adiciona um único bit de redundância em cada um dos seus pacotes de transmissão. Existem dois tipos de paridade, paridade par ou paridade ímpar,
+        para o código de paridade par o valor do dígito de redundância - 0 ou 1 - é determinado de forma que a quantidade de 1&lsquo;s do pacote recebido seja par, de forma análoga e
+        contrária é determinado o bit para um paridade ímpar.
       </Typography>
 
       <Typography variant="h6">
@@ -79,7 +83,13 @@ const Home: NextPage = () => {
         variant="body1"
         gutterBottom
       >
-          Texto
+            O código de Hamming, precursor dos CCE modernos, desenvolvido no final dos da década de 1940, o trabalho surgiu devido à insatisfação de seu criador <i>Richard Hamming</i> com 
+          a tecnologia da época. Como é explicado em seu artigo, os equipamentos da época, mais especificamente o computador <i>Bell Model V</i>, continha sistemas de detecção de erros que,
+          durante os dias da semana, detectavam os erros e sinalizavam para o operador do equipamento corrigí-lo, enquanto que nos finais de semana, quando um erro era detectado, o computador
+          simplesmente partia para a próxima operação. <br />
+
+          Como Hamming trabalhava aos finais de semana, a indignação de ter que reiniciar suas operações ao se encontrar um erro o levou a questionar &quot;já que os erros podem ser 
+        detectados, porquê não corrigí-los?&quot;. Em seu trabalho ele publicou a respeito do código de Hamming (7,4), onde em um pacote de 7 bits, 4 são de dados e 3 de redundância.
       </Typography>
 
       <Typography variant="h6">
