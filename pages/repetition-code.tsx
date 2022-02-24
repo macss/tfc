@@ -14,7 +14,7 @@ const RepetitionCode = () => {
   return (
     <Box>
       <Typography variant="h6">
-        Dígito de Paridade
+        Código de Repetição
       </Typography>
       <Divider />
       <br />
