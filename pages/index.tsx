@@ -50,8 +50,13 @@ const Home: NextPage = () => {
         variant="body1"
         gutterBottom
       >
-          O código de repetição é o mais básico dos CCE, a ideia de seu funcionamento é simples, para se transmitir uma mensagem envia-se o conteúdo original seguido de uma ou mais 
-        cópias do mesmo. Para este trabalho será utilizado uma taxa de repetição de 3, ou seja, a mensagem será enviada com duas cópias de si mesma.
+          O código de repetição é o mais básico dos CCE que, apesar de ser considerado um método
+          problemático, foi muito utilizado em telecomunicações. O problema consiste em sua ineficiência
+          pois, na melhor das hipóteses, necessita de 66,7% de redundância. A ideia por trás é simples,
+          ao se transmitir uma mensagem o conteúdo é enviado com pelo menos duas cópias de si, a
+          mensagem recebida é comparada com as cópias e o resultado que representa a maioria é tomado
+          como certo. Para este trabalho a taxa de repetição utilizada será de 3, ou seja, a mensagem será
+          enviada três vezes, a original seguida de duas cópias.
       </Typography>
 
       <Typography variant="h6">
